@@ -3,10 +3,10 @@
 	"name": "Dataview List",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Scans your vault for Dataview inline properties and displays them in a convenient sidebar view.",
+	"author": "Sarah Wolff",
+	"authorUrl": "https://obsidian.serabi.me",
+	"fundingUrl": "https://obsidian.serabi.me",
 	"isDesktopOnly": false,
 	"css": "styles.css"
 }
