@@ -23,10 +23,10 @@ export class VaultScanner {
                 const queries = await this.scanFile(file);
                 
                 for (const query of queries) {
-                    if (!queryMap.has(query.query)) {
-                        queryMap.set(query.query, []);
+                    if (!queryMap.has(query.queryText)) {
+                        queryMap.set(query.queryText, []);
                     }
-                    queryMap.get(query.query)?.push(query);
+                    queryMap.get(query.queryText)?.push(query);
                 }
             } catch (error) {
                 console.error(`Error scanning file ${file.path}:`, error);
@@ -40,17 +40,15 @@ export class VaultScanner {
         const content = await this.vault.cachedRead(file);
         const queries: DataviewQuery[] = [];
         
-        // Regular expression to match strings ending with ::
-        // Captures everything before :: that isn't a newline
         const queryRegex = /([^\n:]+)::/g;
         let match;
 
         while ((match = queryRegex.exec(content)) !== null) {
-            const query = match[1].trim();
+            const queryText = match[1].trim();
             const lineNumber = this.getLineNumber(content, match.index);
             
             queries.push({
-                query,
+                queryText,
                 filePath: file.path,
                 fileName: file.basename,
                 lineNumber

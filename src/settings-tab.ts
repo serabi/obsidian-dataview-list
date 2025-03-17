@@ -1,5 +1,6 @@
 import { App, PluginSettingTab, Setting } from 'obsidian';
 import DataviewListPlugin from './main';
+import { DataviewListSettings } from './types';
 
 export class DataviewListSettingTab extends PluginSettingTab {
     plugin: DataviewListPlugin;
@@ -37,4 +38,4 @@ export class DataviewListSettingTab extends PluginSettingTab {
                     await this.plugin.saveSettings();
                 }));
     }
-} 
+}
