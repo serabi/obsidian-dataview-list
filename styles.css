@@ -22,3 +22,32 @@ If your plugin does not need CSS, delete this file.
 .dataview-list-header button {
     margin-left: 8px;
 }
+
+.dataview-list-item {
+    margin: 4px 0;
+}
+
+.dataview-list-item-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dataview-list-item-content:hover {
+    background-color: var(--background-modifier-hover);
+}
+
+.dataview-list-item-content code {
+    font-size: 0.9em;
+    padding: 2px 4px;
+    border-radius: 3px;
+    background-color: var(--background-modifier-form);
+}
+
+.dataview-list-item-content small {
+    color: var(--text-muted);
+}

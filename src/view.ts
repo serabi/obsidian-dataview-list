@@ -1,4 +1,4 @@
-import { ItemView, WorkspaceLeaf, ButtonComponent } from 'obsidian';
+import { ItemView, WorkspaceLeaf, ButtonComponent, TFile } from 'obsidian';
 import type DataviewListPlugin from './main';
 
 export const VIEW_TYPE_DATAVIEW_LIST = 'dataview-list-view';
@@ -64,13 +64,41 @@ export class DataviewListView extends ItemView {
             
             const queryList = fileEl.createEl('ul');
             queries.forEach(query => {
-                const queryItem = queryList.createEl('li');
-                queryItem.createEl('code', { text: query.queryText });
+                const queryItem = queryList.createEl('li', {
+                    cls: 'dataview-list-item'
+                });
+                
+                // Create clickable container
+                const clickableContainer = queryItem.createEl('div', {
+                    cls: 'dataview-list-item-content'
+                });
+                
+                // Add query text
+                clickableContainer.createEl('code', { text: query.queryText });
                 if (query.lineNumber) {
-                    queryItem.createEl('small', { 
+                    clickableContainer.createEl('small', { 
                         text: ` (Line ${query.lineNumber})` 
                     });
                 }
+                
+                // Add click handler
+                clickableContainer.addEventListener('click', async () => {
+                    const file = this.app.vault.getAbstractFileByPath(query.filePath);
+                    if (file instanceof TFile) {
+                        const leaf = this.app.workspace.getLeaf(true);
+                        await leaf.openFile(file, { active: true });
+                        
+                        // Wait for the editor to be ready
+                        setTimeout(() => {
+                            const editor = (leaf.view as any).editor;
+                            if (editor) {
+                                const line = query.lineNumber - 1; // Convert to 0-based index
+                                editor.setCursor({ line, ch: 0 });
+                                editor.focus();
+                            }
+                        }, 100);
+                    }
+                });
             });
         }
     }

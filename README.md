@@ -1,21 +1,21 @@
 # Dataview List Plugin for Obsidian
 
-A plugin that scans your Obsidian vault, identifies Dataview inline properties (strings ending with `::`) and displays them in a side panel with clickable links to the files containing those queries.
+A plugin that scans your Obsidian vault, identifies Dataview inline properties (strings ending with `::`) and displays them in a side panel with clickable links to the files containing those inline properties. 
 
 ## Features
 
 ### Version 1 (Current)
 - 🔍 Scans vault for Dataview inline properties (strings ending with `::`)
 - 📋 Displays these inline properties in the side panel
-- COMING SOON: 🔗 Click to navigate to files containing specific queries
+- COMING SOON: 🔗 Click to navigate to files containing specific inline properties
 - ⚙️ Exclude specific folders or files from scanning
 - 🔄 Manual scan trigger via button or command
 
 ### Version 2 (Planned)
 - 📊 Export query list to CSV or Markdown
 - ⏱️ Auto-rescan vault on load or at defined intervals
-- 🔤 Sortable list of queries
-- 🔍 Filterable list of queries
+- 🔤 Sortable list of inline properties
+- 🔍 Filterable list of inline properties
 
 ## Installation
 
@@ -28,8 +28,8 @@ A plugin that scans your Obsidian vault, identifies Dataview inline properties (
 ## Usage
 
 1. Click the Dataview List icon in the ribbon
-2. The side panel will open showing all discovered queries
-3. Click on a query to see all files containing that query
+2. The side panel will open showing all discovered inline properties
+3. Click on a query to see all files containing that inline property. 
 4. Click on a file to navigate to it
 
 ## Settings
