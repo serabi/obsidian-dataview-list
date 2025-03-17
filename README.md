@@ -7,7 +7,7 @@ A plugin that scans your Obsidian vault, identifies Dataview queries (strings en
 ### Version 1 (Current)
 - 🔍 Scans vault for Dataview queries (strings ending with `::`)
 - 📋 Displays queries in a convenient side panel
-- 🔗 Click to navigate to files containing specific queries
+- COMING SOON: 🔗 Click to navigate to files containing specific queries
 - ⚙️ Exclude specific folders or files from scanning
 - 🔄 Manual scan trigger via button or command
 
