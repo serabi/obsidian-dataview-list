@@ -1,4 +1,4 @@
-import { ItemView, WorkspaceLeaf } from 'obsidian';
+import { ItemView, WorkspaceLeaf, ButtonComponent } from 'obsidian';
 import type DataviewListPlugin from './main';
 
 export const VIEW_TYPE_DATAVIEW_LIST = 'dataview-list-view';
@@ -27,8 +27,27 @@ export class DataviewListView extends ItemView {
         const container = this.containerEl.children[1];
         container.empty();
         
-        // Create header
-        container.createEl('h4', { text: 'Dataview Queries' });
+        // Create header container
+        const headerContainer = container.createEl('div', {
+            cls: 'dataview-list-header'
+        });
+
+        // Add title
+        headerContainer.createEl('h4', { 
+            text: 'Dataview Queries',
+            cls: 'dataview-list-title'
+        });
+
+        // Add scan button
+        new ButtonComponent(headerContainer)
+            .setButtonText('Scan Vault')
+            .setIcon('search')
+            .onClick(async () => {
+                await this.plugin.scanVault();
+            });
+
+        // Add some space after the header
+        headerContainer.createEl('hr');
 
         // If no queries found, show message
         if (!this.plugin.queries.size) {

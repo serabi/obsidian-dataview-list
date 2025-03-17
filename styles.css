@@ -6,3 +6,19 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+.dataview-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    margin-bottom: 8px;
+}
+
+.dataview-list-title {
+    margin: 0;
+}
+
+.dataview-list-header button {
+    margin-left: 8px;
+}
